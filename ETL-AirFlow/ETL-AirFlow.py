@@ -25,10 +25,9 @@ department = spark.createDataFrame([
     {"id": 3, "name": "Spark SQL"}
 ])
 
-people.filter(people.age > 30).join(
+people.filter((people.age > 30) & (people.gender == "M")).join(
     department, people.deptId == department.id).groupBy(
     department.name, "gender").agg({"salary": "avg", "age": "max"}).show()
-
 
 
 
